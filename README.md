@@ -28,7 +28,7 @@ Great, now we repeat these steps for the following classes: *atmospheric process
 
 Now that we have described our class hierarchy for lightning strike as an environmental system process we should further describe the semantics of these classes. For lightning strike we included the comment
 
-  A lightning process during which electrostatic discharge occurs between a cloud and an object on a planetary surface, or a planetary surface itself.
+> A lightning process during which electrostatic discharge occurs between a cloud and an object on a planetary surface, or a planetary surface itself.
 
 This amounts to a human readable description (definition) of lightning strike. The Web Ontology Language enables formal (i.e., machine readable) descriptions of classes. These are classes "class descriptions" or "axioms". 
 
