@@ -1,0 +1,159 @@
+@prefix : <http://vocab.envri.eu/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://vocab.envri.eu/> .
+
+<http://vocab.envri.eu/> rdf:type owl:Ontology ;
+                          owl:versionIRI <http://vocab.envri.eu/1.0.0> ;
+                          owl:imports <http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl> ;
+                          <http://purl.org/dc/elements/1.1/creator> "Markus Stocker" ;
+                          <http://purl.org/dc/elements/1.1/date> "2020-01-29" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://vocab.envri.eu/adjacent_to
+:adjacent_to rdf:type owl:ObjectProperty ;
+             rdfs:label "adjacent to"@en .
+
+
+###  http://vocab.envri.eu/has_output
+:has_output rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:label "has output"@en .
+
+
+###  http://vocab.envri.eu/has_participant
+:has_participant rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:label "has participant"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://vocab.envri.eu/atmospheric_lightning
+:atmospheric_lightning rdf:type owl:Class ;
+                       rdfs:subClassOf :atmospheric_process ,
+                                       :electrostatic_discharge_process ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :has_output ;
+                                         owl:someValuesFrom :plasma
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :has_participant ;
+                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass :cloud
+                                       ] ;
+                       rdfs:comment "A sudden electrostatic discharge which occurs during an electrical storm as differentially charged atmospheric entities equalise their charge."@en ;
+                       rdfs:label "atmospheric lightning"@en .
+
+
+###  http://vocab.envri.eu/atmospheric_process
+:atmospheric_process rdf:type owl:Class ;
+                     rdfs:subClassOf :environmental_system_process ;
+                     rdfs:comment "A process which occurs within an atmosphere."@en ;
+                     rdfs:label "atmospheric process"@en .
+
+
+###  http://vocab.envri.eu/cloud
+:cloud rdf:type owl:Class ;
+       rdfs:subClassOf :material_entity ;
+       rdfs:label "cloud"@en .
+
+
+###  http://vocab.envri.eu/electrostatic_discharge_process
+:electrostatic_discharge_process rdf:type owl:Class ;
+                                 rdfs:subClassOf :environmental_system_process ;
+                                 rdfs:label "electrostatic discharge process"@en .
+
+
+###  http://vocab.envri.eu/environmental_system_process
+:environmental_system_process rdf:type owl:Class ;
+                              rdfs:comment "A process in which includes the components of an environmental system as participants."@en ;
+                              rdfs:label "environmental system process"@en .
+
+
+###  http://vocab.envri.eu/lightning_strike
+:lightning_strike rdf:type owl:Class ;
+                  rdfs:subClassOf :atmospheric_lightning ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :has_participant ;
+                                    owl:someValuesFrom [ rdf:type owl:Class ;
+                                                         owl:unionOf ( :planetary_surface
+                                                                       [ owl:intersectionOf ( :material_entity
+                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                owl:onProperty :adjacent_to ;
+                                                                                                owl:someValuesFrom :planetary_surface
+                                                                                              ]
+                                                                                            ) ;
+                                                                         rdf:type owl:Class
+                                                                       ]
+                                                                     )
+                                                       ]
+                                  ] ;
+                  rdfs:comment "A lightning process during which electrostatic discharge occurs between a cloud and an object on a planetary surface, or a planetary surface itself."@en ;
+                  rdfs:label "lightning strike"@en .
+
+
+###  http://vocab.envri.eu/material_entity
+:material_entity rdf:type owl:Class ;
+                 rdfs:label "material entity"@en .
+
+
+###  http://vocab.envri.eu/planetary_surface
+:planetary_surface rdf:type owl:Class ;
+                   rdfs:subClassOf :material_entity ;
+                   rdfs:label "planetary surface"@en .
+
+
+###  http://vocab.envri.eu/plasma
+:plasma rdf:type owl:Class ;
+        rdfs:subClassOf :material_entity ;
+        rdfs:label "plasma"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://vocab.envri.eu/a_cloud
+:a_cloud rdf:type owl:NamedIndividual ,
+                  :cloud ;
+         rdfs:label "a cloud"@en .
+
+
+###  http://vocab.envri.eu/a_forest_floor
+:a_forest_floor rdf:type owl:NamedIndividual ,
+                         :planetary_surface ;
+                rdfs:label "a forest floor"@en .
+
+
+###  http://vocab.envri.eu/a_lightning_strike
+:a_lightning_strike rdf:type owl:NamedIndividual ,
+                             :lightning_strike ;
+                    :has_output :a_plasma ;
+                    :has_participant :a_cloud ,
+                                     :a_tree ;
+                    rdfs:label "a lightning strike"@en .
+
+
+###  http://vocab.envri.eu/a_plasma
+:a_plasma rdf:type owl:NamedIndividual ,
+                   :plasma ;
+          rdfs:label "a plasma"@en .
+
+
+###  http://vocab.envri.eu/a_tree
+:a_tree rdf:type owl:NamedIndividual ,
+                 :material_entity ;
+        :adjacent_to :a_forest_floor ;
+        rdfs:label "a tree"@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
