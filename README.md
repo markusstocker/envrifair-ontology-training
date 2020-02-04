@@ -66,7 +66,7 @@ These steps are repeated for all classes.
 
 So far we have specified our so called "domain of interest", that is lightning strikes as environmental system processes. We have described the terms we need to talk about this domain of interest. 
 
-We can now use this terms to make assertions about individuals, i.e. concrete lightning strikes that occurred in time and space. These are lightning strike *instances*.
+We can now use these terms to make assertions about individuals, i.e. concrete lightning strikes that occurred in time and space. These are lightning strike *instances*.
 
 Select the class `lightning strike` and add an instance. This is done by adding a new individual. You can name it as you wish, say `a lightning strike`. Annotate the individual with a suitable label. Now we can further relate our lightning strike following the class descriptions. Our lightning strike has two participants, at least one cloud and some planetary surface or material entity on some planetary surface and has some plasma output.
 
