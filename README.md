@@ -52,7 +52,7 @@ Now we can express the formal description of lightning strike and its participan
 'has participant' some ('planetary surface' or 'material entity' and 'adjacent to' some 'planetary surface')
 ```
 
-Now we can proceed with formal descriptions of other classes. Let's look at atmospheric lightning. In addition to being a sub class of atmospheric process, [ENVO describes atmospheric process](https://www.ebi.ac.uk/ols/ontologies/envo/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FENVO_01000898&viewMode=All&siblings=false) as a sub class of the electrostatic discharge process having at least one participant cloud and plasma as output. We already have included the `has participant` object property but we lack the classes `electrostatic discharge process`, `cloud` and `plasma` as well as the additional object property `has output`. By now you already know how to include them into your ontology. Make sure to classify these new terms into the existing hierarchy following ENVO.
+Now we can proceed with formal descriptions of other classes. Let's look at atmospheric lightning. In addition to being a sub class of atmospheric process, [ENVO describes atmospheric lightning](https://www.ebi.ac.uk/ols/ontologies/envo/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FENVO_01000898&viewMode=All&siblings=false) as a sub class of the electrostatic discharge process having at least one participant cloud and plasma as output. We already have included the `has participant` object property but we lack the classes `electrostatic discharge process`, `cloud` and `plasma` as well as the additional object property `has output`. By now you already know how to include them into your ontology. Make sure to classify these new terms into the existing hierarchy following ENVO.
 
 Having added these classes and the additional property, we can now describe atmospheric lightning further. Select the `atmospheric lightning` class and added three additional sub class of axioms. 
 
@@ -66,7 +66,7 @@ These steps are repeated for all classes.
 
 So far we have specified our so called "domain of interest", that is lightning strikes as environmental system processes. We have described the terms we need to talk about this domain of interest. 
 
-We can now use this terms to make assertions about individuals, i.e. concrete lightning strikes that occurred in time and space. These are lightning strike *instances*.
+We can now use these terms to make assertions about individuals, i.e. concrete lightning strikes that occurred in time and space. These are lightning strike *instances*.
 
 Select the class `lightning strike` and add an instance. This is done by adding a new individual. You can name it as you wish, say `a lightning strike`. Annotate the individual with a suitable label. Now we can further relate our lightning strike following the class descriptions. Our lightning strike has two participants, at least one cloud and some planetary surface or material entity on some planetary surface and has some plasma output.
 
