@@ -75,6 +75,7 @@
 
 ###  http://vocab.envri.eu/environmental_system_process
 :environmental_system_process rdf:type owl:Class ;
+                              owl:disjointWith :material_entity ;
                               rdfs:comment "A process in which includes the components of an environmental system as participants."@en ;
                               rdfs:label "environmental system process"@en .
 
